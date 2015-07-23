@@ -85,16 +85,9 @@ Heres an example of how you might change the root password using the `-e` parame
 
     ansible-playbook myplay.yml -e "mysql_current_root_password='current_pass' mysql_root_password='new_pass'" --sudo
 
-#### Testing
-This project comes with a VagrantFile, this is a fast and easy way to test
-changes to the role, fire it up with `vagrant up`, provision the box with
-either:
+If you already have ubuntu machine, configure in hosts.yml file and run below command:
 
-    vagrant provision
-
-This also happens automatically after the first `vagrant up`, or:
-
-    ansible-playbook test.yml -i vagrant-inventory --sudo
+    ansible-playbook -i hosts.yml test.yml -e "mysql_current_root_password='' mysql_root_password='root'" -u ubuntu --sudo
 
 This is the ansible way, and will easily allow command line arguments like `--tags` and `-e`
 
